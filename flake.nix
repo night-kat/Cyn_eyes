@@ -21,6 +21,7 @@
         bacon
         alsa-lib
         systemd # provides libudev
+        libx11
       ];
 
       nativeBuildInputs = [pkgs.pkg-config];

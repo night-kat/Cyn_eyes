@@ -5,5 +5,7 @@ edition = "2024"
 
 [dependencies]
 ggez = "0.9.3"
+glam = "0.32.1"
 image = "0.25.10"
 reqwest = {version = "0.13.2", features = ["blocking"] }
+screen_size = "0.1.0"
