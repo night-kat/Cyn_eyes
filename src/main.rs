@@ -1,6 +1,11 @@
 //! The simplest possible example that does something.
 #![allow(clippy::unnecessary_wraps)]
 
+#[derive(Debug)]
+struct EyeProperties {
+    eye_width: f32,
+    eye_height: f32,
+}
 use ggez::{
     Context, GameResult, event,
     glam::*,
@@ -13,12 +18,21 @@ struct MainState {
 
 impl MainState {
     fn new(ctx: &mut Context) -> GameResult<MainState> {
+        let (w, h) = graphics::GraphicsContext::drawable_size(&ctx.gfx);
+
+        let eye_properties = EyeProperties {
+            eye_width: w * 0.20,
+            eye_height: (h * 0.5),
+        };
+
+        dbg!(&eye_properties);
+
         let ellipse = graphics::Mesh::new_ellipse(
             ctx,
             graphics::DrawMode::fill(),
             vec2(0., 0.),
-            100.,
-            150.,
+            eye_properties.eye_width,
+            eye_properties.eye_height,
             2.0,
             Color::YELLOW,
         )?;
@@ -47,9 +61,11 @@ impl event::EventHandler for MainState {
         let mut canvas =
             graphics::Canvas::from_frame(ctx, graphics::Color::from([0.1, 0.2, 0.3, 1.0]));
         let dimensions = canvas.screen_coordinates().unwrap();
+
         canvas.draw(
             &self.ellipse,
-            Vec2::new(dimensions.w / 2., dimensions.h / 2.),
+            // Place one eye at one quarter of the width (left side) and half the height
+            Vec2::new(dimensions.w * (1. / 4.), dimensions.h / 2.),
         );
 
         canvas.finish(ctx)?;
