@@ -776,15 +776,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "460fbee9c2c2f33933d720630a6a0bac33ba7053db5344fac858d4b8952d77d5"
 
 [[package]]
-name = "cyn_eyes_murder_drones"
-version = "0.1.0"
-dependencies = [
- "ggez",
- "image 0.25.10",
- "reqwest",
-]
-
-[[package]]
 name = "d3d12"
 version = "0.6.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3925,6 +3916,15 @@ checksum = "a68d3c8f01c0cfa54a75291d83601161799e4a89a39e0929f4b0354d88757a37"
 dependencies = [
  "js-sys",
  "wasm-bindgen",
+]
+
+[[package]]
+name = "uzi_eyes_murder_drones"
+version = "0.1.0"
+dependencies = [
+ "ggez",
+ "image 0.25.10",
+ "reqwest",
 ]
 
 [[package]]
